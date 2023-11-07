@@ -106,9 +106,7 @@ const Account = () => {
               }}
               style={[styles.rectangleButton, { backgroundColor: 'black' }]}
               labelStyle={{ fontSize: 18 }}
-            >
-              Registrati
-            </Button>
+            >Registrati</Button>
           </View>
           <Text style={styles.additionalText}>Hai già un account?
             <Text

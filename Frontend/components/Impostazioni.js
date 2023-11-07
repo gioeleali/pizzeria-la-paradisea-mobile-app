@@ -21,9 +21,9 @@ const Impostazioni = () => {
       },
       {
         id: '3',
-        title: 'Impostazione 3',
-        description: 'Descrizione 3',
-        icon: 'cog'
+        title: 'Account',
+        description: 'Gestisci Account',
+        icon: 'account'
       },
       {
         id: '4',

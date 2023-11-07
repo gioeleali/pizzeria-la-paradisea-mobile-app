@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { Text, TextInput, Button, HelperText, useTheme } from 'react-native-paper';
+import { Text, TextInput, Button, HelperText, useTheme, TouchableRipple } from 'react-native-paper';
 import { View, StyleSheet, Linking } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import FeatherIcon from 'react-native-vector-icons/Feather';
 
 const Login = () => { 
     const navigation = useNavigation();
@@ -69,9 +70,7 @@ const Login = () => {
               }}
               style={[styles.rectangleButton, { backgroundColor: 'black' }]}
               labelStyle={{ fontSize: 18 }}
-            >
-              Accedi
-            </Button>
+            >Accedi</Button>
           </View>
           <Text style={styles.additionalText}>Sei nuovo?
             <Text

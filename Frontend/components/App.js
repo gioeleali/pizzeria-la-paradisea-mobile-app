@@ -8,6 +8,8 @@ import Info from './Info';
 import Impostazioni from './Impostazioni';
 import Tema from './Impostazioni/Tema';
 import Preferenze from './Impostazioni/Preferenze';
+import Login from './Account/Login';
+import Account_Settings from './Impostazioni/Account'
 
 const Stack = createStackNavigator();
 
@@ -44,6 +46,8 @@ function App() {
         <Stack.Screen name="Impostazioni" component={Impostazioni} options={{ headerShown: false }} />
         <Stack.Screen name="Tema" component={Tema} options={{ headerShown: false }} />
         <Stack.Screen name="Preferenze" component={Preferenze} options={{ headerShown: false }} />
+        <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
+        <Stack.Screen name="Account" component={Account_Settings} options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>
   );
