@@ -30,7 +30,7 @@ const Account = () => {
     const isPasswordValid = (text) => {
       const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{12,}$/;
       return text === '' || (regex.test(text) && text.length > 0);
-    };    
+    };
 
     return (
         <View style={styles.container}>
