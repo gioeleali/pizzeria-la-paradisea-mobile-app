@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Text, TextInput, Button, HelperText, useTheme } from 'react-native-paper';
 import { View, StyleSheet, Linking } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import axios from 'axios';
 
 const Account = () => {
     const navigation = useNavigation();
@@ -30,6 +31,21 @@ const Account = () => {
     const isPasswordValid = (text) => {
       const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{12,}$/;
       return text === '' || (regex.test(text) && text.length > 0);
+    };
+
+    const submitData = () => {
+      axios.post('http://<your-django-server>/register/', {
+        nome: nome,
+        cognome: cognome,
+        email: email,
+        password: password
+      })
+      .then(response => {
+        console.log('User registered:', response.data);
+      })
+      .catch(error => {
+        console.error('Registration error:', error);
+      });
     };
 
     return (
