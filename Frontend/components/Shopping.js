@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
-import { View, Text, Image, StyleSheet, FlatList, TouchableOpacity, Dimensions } from 'react-native';
+import { View, Text, Image, StyleSheet, FlatList, TouchableOpacity, Button, Dimensions, Modal, ScrollView } from 'react-native';
 import { FAB } from 'react-native-paper';
+
+const windowWidth = Dimensions.get('window').width;
+const itemWidth = (windowWidth / 2) - 20;
 
 const articoli = [
   {
@@ -31,17 +34,61 @@ const articoli = [
 
 const Shopping = () => {
   const [cart, setCart] = useState([]);
+  const [isCartVisible, setIsCartVisible] = useState(false);
 
   const addItemToCart = (item) => {
-    setCart([...cart, item]);
+    setCart((currentCart) => {
+      const itemIndex = currentCart.findIndex((cartItem) => cartItem.id === item.id);
+      if (itemIndex > -1) {
+        const newCart = [...currentCart];
+        newCart[itemIndex].quantity += 1;
+        return newCart;
+      }
+      return [...currentCart, { ...item, quantity: 1 }];
+    });
+  };
+
+  const calculateTotal = () => {
+    return cart.reduce((total, item) => total + item.quantity * parseFloat(item.price.replace('€', '')), 0);
   };
 
   const renderItem = ({ item }) => (
-    <TouchableOpacity onPress={() => addItemToCart(item)} style={styles.itemContainer}>
+    <View style={styles.itemContainer}>
       <Image source={item.image} style={styles.itemImage} />
       <Text style={styles.itemName}>{item.name}</Text>
       <Text style={styles.itemPrice}>{item.price}</Text>
-    </TouchableOpacity>
+      <Button
+        title="ADD TO CART"
+        onPress={() => addItemToCart(item)}
+      />
+    </View>
+  );
+
+  const CartModal = () => (
+    <Modal
+      animationType="slide"
+      transparent={true}
+      visible={isCartVisible}
+      onRequestClose={() => setIsCartVisible(false)}
+    >
+      <View style={styles.modalView}>
+        <ScrollView>
+          {cart.map((item, index) => (
+            <View key={index} style={styles.cartItem}>
+              <Text style={styles.cartItemName}>{item.name}</Text>
+              <Text style={styles.cartItemPrice}>{`${item.quantity} x ${item.price}`}</Text>
+            </View>
+          ))}
+        </ScrollView>
+        <Text style={styles.totalPrice}>Total: €{calculateTotal().toFixed(2)}</Text>
+        <TouchableOpacity
+          style={styles.closeButton}
+          onPress={() => setIsCartVisible(false)}
+        >
+          <Text style={styles.textStyle}>Close</Text>
+        </TouchableOpacity>
+      </View>
+    </Modal>
   );
 
   return (
@@ -53,69 +100,97 @@ const Shopping = () => {
         renderItem={renderItem}
         numColumns={2}
       />
-      <View style={styles.cartContainer}>
-        <FAB
-          icon="cart"
-          style={styles.cart}
-          color="white"
-          onPress={() => console.log("Apri il carrello")}
-        />
-      </View>
+      <FAB
+        icon="cart"
+        style={styles.cart}
+        color="white"
+        onPress={() => setIsCartVisible(true)}
+      />
+      <CartModal />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: 'white',
     flex: 1,
-    alignItems: 'flex-start',
-    justifyContent: 'flex-start',
     padding: 16,
+    backgroundColor: 'white',
   },
   title: {
-    color: 'black',
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 16,
   },
   itemContainer: {
     backgroundColor: 'white',
-    width: '45%',
+    borderWidth: 1,
+    borderColor: '#e1e1e1',
+    borderRadius: 8,
     padding: 8,
-    marginBottom: 8,
-    flexDirection: 'row',
+    margin: 8,
+    width: itemWidth,
     alignItems: 'center',
-    justifyContent: 'space-between',
   },
   itemImage: {
-    aspectRatio: 1,
-    width: 50,
-    height: 50,
+    width: '100%', // Adjusted from 100% to 70%
+    height: itemWidth * 0.7, // Adjust the height proportionally
     resizeMode: 'contain',
-    borderRadius: 8,
   },
   itemName: {
-    flex: 1,
-    fontSize: 14,
+    fontSize: 16,
     fontWeight: 'bold',
-    marginLeft: 8,
+    marginVertical: 8,
   },
   itemPrice: {
-    fontSize: 12,
+    fontSize: 14,
     color: 'gray',
-    marginTop: 3,
-  },
-  cartContainer: {
-    position: 'absolute',
-    bottom: 20,
-    width: '100%',
-    alignItems: 'center',
-    left: 175,
   },
   cart: {
+    position: 'absolute',
+    margin: 16,
+    right: 0,
+    bottom: 0,
+    color: 'white',
     backgroundColor: 'black',
-    borderRadius: 16,
+  },
+  modalView: {
+    margin: 20,
+    backgroundColor: 'white',
+    borderRadius: 20,
+    padding: 35,
+    alignItems: 'center',
+    elevation: 5
+  },
+  cartItem: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    padding: 10,
+    borderBottomWidth: 1,
+    borderColor: '#e1e1e1',
+  },
+  cartItemName: {
+    fontWeight: 'bold',
+  },
+  cartItemPrice: {
+    // ... your styles
+  },
+  totalPrice: {
+    marginTop: 10,
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+  closeButton: {
+    backgroundColor: '#2196F3',
+    borderRadius: 20,
+    padding: 10,
+    elevation: 2,
+    marginTop: 10,
+  },
+  textStyle: {
+    color: 'white',
+    fontWeight: 'bold',
+    textAlign: 'center'
   },
 });
 
