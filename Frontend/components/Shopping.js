@@ -53,15 +53,11 @@ const Shopping = () => {
   };
 
   const renderItem = ({ item }) => (
-    <View style={styles.itemContainer}>
+    <TouchableOpacity style={styles.itemContainer} onPress={() => addItemToCart(item)}>
       <Image source={item.image} style={styles.itemImage} />
       <Text style={styles.itemName}>{item.name}</Text>
       <Text style={styles.itemPrice}>{item.price}</Text>
-      <Button
-        title="ADD TO CART"
-        onPress={() => addItemToCart(item)}
-      />
-    </View>
+    </TouchableOpacity>
   );
 
   const CartModal = () => (
@@ -129,12 +125,12 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     padding: 8,
     margin: 8,
-    width: itemWidth,
+    width: '46%',
     alignItems: 'center',
   },
   itemImage: {
-    width: '100%', // Adjusted from 100% to 70%
-    height: itemWidth * 0.7, // Adjust the height proportionally
+    width: '100%',
+    height: itemWidth * 0.7,
     resizeMode: 'contain',
   },
   itemName: {
@@ -160,6 +156,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     padding: 35,
     alignItems: 'center',
+    justifyContent: 'center',
     elevation: 5
   },
   cartItem: {
