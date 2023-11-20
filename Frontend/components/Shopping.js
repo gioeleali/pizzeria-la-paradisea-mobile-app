@@ -8,26 +8,74 @@ const itemWidth = (windowWidth / 2) - 20;
 const articoli = [
   {
     id: '1',
-    name: 'Crema',
-    image: require('../assets/png/crema.png'),
+    name: 'Crema Pasticcera',
+    image: require('../assets/png/crema.webp'),
     price: '€2.50',
   },
   {
     id: '2',
     name: 'Pistacchio',
-    image: require('../assets/png/pistacchio.png'),
+    image: require('../assets/png/pistacchio.webp'),
     price: '€2.00',
   },
   {
     id: '3',
     name: 'Panna',
-    image: require('../assets/png/crema.png'),
+    image: require('../assets/png/panna.webp'),
     price: '€2.50',
   },
   {
     id: '4',
-    name: 'Kinder',
-    image: require('../assets/png/pistacchio.png'),
+    name: 'Ferrero Rocher',
+    image: require('../assets/png/ferrero_rocher.webp'),
+    price: '€2.00',
+  },
+  {
+    id: '5',
+    name: 'Frutti Rossi',
+    image: require('../assets/png/frutti_rossi.webp'),
+    price: '€2.50',
+  },
+  {
+    id: '6',
+    name: 'Limone',
+    image: require('../assets/png/limone.webp'),
+    price: '€2.00',
+  },
+  {
+    id: '7',
+    name: 'Arancia',
+    image: require('../assets/png/arancia.webp'),
+    price: '€2.50',
+  },
+  {
+    id: '8',
+    name: 'Kinder Bueno',
+    image: require('../assets/png/kinder_bueno.webp'),
+    price: '€2.00',
+  },
+  {
+    id: '9',
+    name: 'Nutella',
+    image: require('../assets/png/nutella.webp'),
+    price: '€2.50',
+  },
+  {
+    id: '10',
+    name: 'Cioccolato Bianco',
+    image: require('../assets/png/cioccolato_bianco.webp'),
+    price: '€2.00',
+  },
+  {
+    id: '11',
+    name: 'Caramello Salato',
+    image: require('../assets/png/caramello_salato.webp'),
+    price: '€2.50',
+  },
+  {
+    id: '12',
+    name: 'Cioccolato Fondente',
+    image: require('../assets/png/cioccolato_fondente.webp'),
     price: '€2.00',
   },
 ];
@@ -76,12 +124,12 @@ const Shopping = () => {
             </View>
           ))}
         </ScrollView>
-        <Text style={styles.totalPrice}>Total: €{calculateTotal().toFixed(2)}</Text>
+        <Text style={styles.totalPrice}>Totale: €{calculateTotal().toFixed(2)}</Text>
         <TouchableOpacity
           style={styles.closeButton}
           onPress={() => setIsCartVisible(false)}
         >
-          <Text style={styles.textStyle}>Close</Text>
+          <Text style={styles.textStyle}>Chiudi</Text>
         </TouchableOpacity>
       </View>
     </Modal>

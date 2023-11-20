@@ -23,14 +23,9 @@ const Info = () => {
             <Text style={styles.bold}>Lunedì</Text>: Chiuso
             {'\n'}
             <Text style={styles.bold}>Martedì</Text>: 16:30–01
-            {'\n\n'}
-            <Text
-                style={styles.link}
-                onPress={() => Linking.openURL('https://www.facebook.com/bombolopisa/?locale=it_IT')}
-              >Facebook</Text>
           </Text>
         </Card.Content>
-        <Card.Cover style={styles.cover} source={{ uri: 'https://ilrifugiosiciliano.altervista.org/wp-content/uploads/2020/04/bomboloni-alla-nutella-1.png' }} />
+        <Card.Cover style={styles.cover} source={require('../assets/png/home.webp')} />
       </Card>
     </View>
   );
