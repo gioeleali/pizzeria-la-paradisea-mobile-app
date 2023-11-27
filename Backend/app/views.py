@@ -1,28 +1,12 @@
 from django.shortcuts import render
-from django.http import JsonResponse
-from rest_framework.decorators import api_view
-from rest_framework.response import Response
-from rest_framework import status
-from .models import User
-from .serializers import UserSerializer
+from .forms import RegistrazioneForm
 
-@api_view(['POST'])
-def register(request):
-    """
-    Handle user registration.
-    """
-    serializer = UserSerializer(data=request.data)
-    if serializer.is_valid():
-        serializer.save()
-        return Response(serializer.data, status=status.HTTP_201_CREATED)
-    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-def user_list(request):
-    """
-    Display a list of registered users.
-    """
-    users = User.objects.all()
-    return render(request, 'user_list.html', {'users': users})
-
-def home(request):
-    return HttpResponse("Home Page")
+def registra_utente(request):
+    if request.method == 'POST':
+        form = RegistrazioneForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return render(request, 'register_success.html')
+    else:
+        form = RegistrazioneForm()
+    return render(request, 'register.html', {'form': form})
