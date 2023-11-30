@@ -1,8 +1,0 @@
-- mostra eye nella login
-- migliora pulsante register
-
-- sistema shopping
-
-- pagina info con card e mappe
-
-- aggiungi impostazioni vere con checkbox e toggle

@@ -1,9 +1,9 @@
 from django import forms
-from .models import register
+from .models import User
 
 class RegistrazioneForm(forms.ModelForm):
     class Meta:
-        model = register
+        model = User
         fields = ['nome', 'cognome', 'email', 'password']
         widgets = {
             'password': forms.PasswordInput(),

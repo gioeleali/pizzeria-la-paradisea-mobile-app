@@ -34,7 +34,7 @@ const Account = () => {
     };
 
     const submitData = () => {
-      axios.post('http://<your-django-server>/register/', {
+      axios.post('http://192.168.85.26:8000/register/', {
         nome: nome,
         cognome: cognome,
         email: email,
@@ -119,6 +119,7 @@ const Account = () => {
                 console.log('Cognome:', cognome);
                 console.log('Email:', email);
                 console.log('Password:', password);
+                submitData();
               }}
               style={[styles.rectangleButton, { backgroundColor: 'black' }]}
               labelStyle={{ fontSize: 18 }}
