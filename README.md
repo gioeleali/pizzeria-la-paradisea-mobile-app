@@ -1,26 +1,35 @@
-![Banner Bombify](https://github.com/gioeleali/Bombify/blob/main/Frontend/assets/png/home.webp)
+# Bombify 🍩
 
-# Bombify
+**Bombify** is an innovative and intuitive mobile platform, specifically designed to transform the experience of selling and buying doughnuts. This sleek and user-friendly app is equipped with a wide range of features for both doughnut sellers and buyers.
 
-Bombify è una piattaforma mobile per la gestione della vendita di bomboloni. L'app include sezioni per informazioni, acquisti, gestione delle impostazioni personali e un'area account con una futura integrazione di una carta fedeltà.
+With Bombify, sellers can easily manage their inventory, set prices, promotions, and provide real-time updates on product availability. Users can browse through a variety of flavors and options, make purchases with just a few taps, and receive notifications for new arrivals or special offers.
 
-## Indice
+### Key Features:
+- Product Information and Details: Each doughnut is presented with appetizing details and high-quality images.
+- Simplified Purchases: An intuitive user interface makes the doughnut purchasing experience smooth and enjoyable.
+- Personal Management: Users can customize settings, manage their orders, and track their preferences.
+- Account Area: A dedicated section where users can view their purchase history and manage their personal data.
+- Digital Loyalty Card (coming soon): A feature in development that will reward regular customers with exclusive discounts and offers.
 
-- [Requisiti di Sistema](#requisiti-di-sistema)
-- [Configurazione dell'Ambiente di Sviluppo](#configurazione-dellambiente-di-sviluppo)
-  - [Installazione di Node.js](#installazione-di-nodejs)
-  - [Installazione Python 3](#installazione-python-3)
-  - [Installazione JDK (Java Development Kit)](#installazione-jdk-java-development-kit)
-  - [Installazione Android Studio](#installazione-android-studio)
-  - [Installazione Git](#installazione-git)
-- [Esecuzione del Progetto](#esecuzione-del-progetto)
-  - [Avvio del Frontend](#avvio-del-frontend)
-  - [Configurazione del Backend](#configurazione-del-backend)
-    - [Creazione e Attivazione dell'Ambiente Virtuale](#creazione-e-attivazione-dellambiente-virtuale)
-    - [Installazione di Django e Django REST framework](#installazione-di-django-e-django-rest-framework)
-    - [Migrazioni del Database e Avvio del Server Django](#migrazioni-del-database-e-avvio-del-server-django)
+Bombify is not just an app; it's a community for doughnut lovers, a place where passion for these treats meets the convenience of mobile technology. Whether you are an artisan baker or a doughnut enthusiast, Bombify is here to make every bite of doughnut even sweeter!
 
-## Requisiti di Sistema
+## Table of Contents
+
+- [System Requirements](#system-requirements)
+- [Development Environment Setup](#development-environment-setup)
+  - [Node.js Installation](#nodejs-installation)
+  - [Python 3 Installation](#python-3-installation)
+  - [JDK (Java Development Kit) Installation](#jdk-java-development-kit-installation)
+  - [Android Studio Installation](#android-studio-installation)
+  - [Git Installation](#git-installation)
+- [Project Execution](#project-execution)
+  - [Frontend Start-up](#frontend-start-up)
+  - [Backend Configuration](#backend-configuration)
+    - [Creating and Activating the Virtual Environment](#creating-and-activating-the-virtual-environment)
+    - [Installing Django and Django REST framework](#installing-django-and-django-rest-framework)
+    - [Database Migrations and Django Server Start-up](#database-migrations-and-django-server-start-up)
+
+## System Requirements
 
 - Node.js
 - Python 3
@@ -28,143 +37,154 @@ Bombify è una piattaforma mobile per la gestione della vendita di bomboloni. L'
 - Android Studio
 - Git
 
-## Configurazione dell'Ambiente di Sviluppo
+## Development Environment Setup
 
 ### Frontend React Native
 
-#### Installazione di Node.js
-Per sviluppare l'applicazione frontend in React Native, è necessario installare Node.js. Ecco i passaggi per l'installazione:
+#### Node.js Installation
+To develop the React Native frontend application, it is necessary to install Node.js. Here are the steps for installation:
 
-1. Scaricare Node.js:
-   - Vai al sito web ufficiale di [Node.js](https://nodejs.org/).
-   - Scegli e scarica la versione raccomandata per la maggior parte degli utenti.
-   - Se sei su Windows, puoi scaricare l'installer (.msi), mentre su macOS puoi scaricare il pacchetto (.pkg).
+1. Download Node.js:
+   - Go to the official [Node.js website](https://nodejs.org/).
+   - Choose and download the version recommended for most users.
+   - If you are on Windows, you can download the installer (.msi), while on macOS you can download the package (.pkg).
 
-2. Installazione:
-   - **Windows**: Esegui l'installer scaricato e segui le istruzioni.
-   - **macOS**: Apri il pacchetto scaricato e segui il processo guidato di installazione.
-   - **Linux**: Puoi installare Node.js tramite il gestore pacchetti della tua distribuzione. Ad esempio, su Ubuntu, puoi utilizzare il comando: `sudo apt-get install nodejs`.
+2. Installation:
+   - **Windows**: Run the downloaded installer and follow the instructions.
+   - **macOS**: Open the downloaded package and follow the guided installation process.
+   - **Linux**: You can install Node.js via your distribution's package manager. For example, on Ubuntu, you can use the command: `sudo apt-get install nodejs`.
 
-3. Verifica dell'installazione:
-   - Apri il terminale o il prompt dei comandi.
-   - Digita `node -v` per verificare la versione di Node.js installata.
-   - Digita `npm -v` per verificare la versione di npm (Node Package Manager) installata.
+3. Installation Verification:
+   - Open the terminal or command prompt.
+   - Type `node -v` to verify the installed version of Node.js.
+   - Type `npm -v` to verify the version of npm (Node Package Manager) installed.
 
-4. Aggiornamento di npm (opzionale):
-   - Per assicurarti di avere l'ultima versione di npm, esegui `npm install -g npm` nel terminale.
+4. npm Update (optional):
+   - To ensure you have the latest version of npm, run `npm install -g npm` in the terminal.
 
-#### Installazione Python 3
+#### Python 3 Installation
 
-Python è necessario per il backend Django del progetto. Ecco come installarlo:
+Python is necessary for the Django backend of the project. Here's how to install it:
 
-1. Scaricare Python:
-   - Visita il sito ufficiale di [Python](https://www.python.org/downloads/).
-   - Scegli e scarica l'ultima versione di Python 3 per il tuo sistema operativo.
+1. Download Python:
+   - Visit the official [Python website](https://www.python.org/downloads/).
+   - Choose and download the latest version of Python 3 for your operating system.
 
-2. Installazione:
-   - **Windows/Linux/macOS**: Esegui l'installer scaricato e segui le istruzioni. Assicurati di selezionare l'opzione per aggiungere Python al PATH.
+2. Installation:
+   - **Windows/Linux/macOS**: Run the downloaded installer and follow the instructions. Make sure to select the option to add Python to PATH.
 
-3. Verifica dell'installazione:
-   - Apri il terminale o il prompt dei comandi.
-   - Digita `python --version` per confermare che Python è stato installato correttamente.
+3. Installation Verification:
+   - Open the terminal or command prompt.
+   - Type `python --version` to confirm that Python has been installed correctly.
 
-#### Installazione JDK (Java Development Kit)
+#### JDK (Java Development Kit) Installation
 
-Il JDK è essenziale per lo sviluppo Android con React Native.
+The JDK is essential for Android development with React Native.
 
-1. Scaricare JDK:
-   - Vai alla pagina di [Oracle JDK](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html) o [AdoptOpenJDK](https://adoptopenjdk.net/).
-   - Scegli e scarica la versione appropriata per il tuo sistema operativo.
+1. Download JDK:
+   - Go to the [Oracle JDK page](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html) or [AdoptOpenJDK](https://adoptopenjdk.net/).
+   - Choose and download the appropriate version for your operating system.
 
-2. Installazione:
-   - Segui il processo di installazione guidato dopo aver scaricato il JDK.
+2. Installation:
+   - Follow the guided installation process after downloading the JDK.
 
-3. Configurazione dell'ambiente:
-   - Aggiungi il percorso dell'installazione del JDK alle variabili d'ambiente del tuo sistema.
+3. Environment Configuration:
+   - Add the installation path of the JDK to your system's environment variables.
 
-#### Installazione Android Studio
+#### Android Studio Installation
 
-Android Studio fornisce l'ambiente di sviluppo integrato (IDE) per lo sviluppo Android.
+Android Studio provides the integrated development environment (IDE) for Android development.
 
-1. Scaricare Android Studio:
-   - Visita il sito ufficiale di [Android Studio](https://developer.android.com/studio).
-   - Scarica la versione più recente per il tuo sistema operativo.
+1. Download Android Studio:
+   - Visit the official [Android Studio website](https://developer.android.com/studio).
+   - Download the latest version for your operating system.
 
-2. Installazione:
-   - Esegui l'installer scaricato e segui le istruzioni per completare l'installazione.
-   - Durante l'installazione, assicurati di selezionare le seguenti opzioni:
+2. Installation:
+   - Run the downloaded installer and follow the instructions to complete the installation.
+   - During installation, make sure to select the following options:
      - `Android SDK Platform`
      - `Android Virtual Device`
 
-3. Configurazione post-installazione:
-   - Al termine dell'installazione, avvia Android Studio.
-   - Completa la configurazione guidata e assicurati di installare l'`Android SDK Platform 33`.
-   - Scegli tra `Intel x86 Atom_64 System Image` o `Google APIs Intel x86 Atom System Image` per le immagini del sistema.
+3. Post-installation Configuration:
+   - After installation, start Android Studio.
+   - Complete the guided configuration and make sure to install `Android SDK Platform 33`.
+   - Choose between `Intel x86 Atom_64 System Image` or `Google APIs Intel x86 Atom System Image` for system images.
 
-#### Installazione Git
+#### Git Installation
 
-Git è un sistema di controllo versione indispensabile per la gestione del codice sorgente.
+Git is an indispensable version control system for source code management.
 
-1. Scaricare Git:
-   - Visita [Git SCM](https://git-scm.com/downloads).
-   - Scarica la versione più recente per il tuo sistema operativo.
+1. Download Git:
+   - Visit [Git SCM](https://git-scm.com/downloads).
+   - Download the latest version for your operating system.
 
-2. Installazione:
-   - Esegui l'installer scaricato e segui le istruzioni.
-   - Durante l'installazione, scegli le opzioni che meglio si adattano al tuo ambiente di sviluppo.
+2. Installation:
+   - Run the downloaded installer and follow the instructions.
+   - During installation, choose the options that best suit your development environment.
 
-3. Verifica dell'installazione:
-   - Apri il terminale o il prompt dei comandi.
-   - Digita `git --version` per confermare che Git è stato installato correttamente.
-  
-### Esecuzione del Progetto
+3. Installation Verification:
+   - Open the terminal or command prompt.
+   - Type `git --version` to confirm that Git has been installed correctly.
 
-Dopo aver configurato l'ambiente di sviluppo, segui questi passaggi per eseguire il progetto:
+### Project Execution
 
-#### Avvio del Frontend
+After setting up the development environment, follow these steps to execute the project:
 
-1. Apertura del Terminale:
-   - Apri un terminale o un prompt dei comandi sul tuo computer.
+#### Frontend Start-up
 
-2. Navigazione nella Cartella del Frontend:
-   - Utilizza il comando `cd Frontend` per spostarti nella cartella del frontend del progetto.
+1. Opening the Terminal:
+   - Open a terminal or command prompt on your computer.
 
-3. Installazione delle Dipendenze:
-   - Esegui `npm install` per installare tutte le dipendenze necessarie al progetto.
+2. Navigating to the Frontend Folder:
+   - Use the `cd Frontend` command to move to the project's frontend folder.
 
-4. Avvio dell'Applicazione:
-   - Una volta completata l'installazione delle dipendenze, esegui `npm start` per avviare il frontend dell'applicazione.
+3. Installing Dependencies:
+   - Run `npm install` to install all necessary dependencies for the project.
 
-Segui queste istruzioni per avviare il frontend del tuo progetto Bombify. Assicurati che tutti i passaggi di installazione e configurazione siano stati completati correttamente prima di procedere con l'esecuzione del progetto.
+4. Starting the Application:
+   - Once the dependencies have been installed, run `npm start` to start the frontend of the application.
 
-#### Configurazione del Backend
+Follow these instructions to start the frontend of your Bombify project. Ensure that all installation and configuration steps have been completed correctly before proceeding with project execution.
 
-Prima di eseguire il backend, è importante configurare un ambiente virtuale Python. Questo permette di isolare le dipendenze del progetto, evitando conflitti con altre installazioni Python sul sistema e facilitando la gestione delle librerie specifiche del progetto.
+#### Backend Configuration
 
-1. Creazione dell'Ambiente Virtuale:
-   - Apri un terminale o un prompt dei comandi.
-   - Naviga alla cartella del backend del progetto.
-   - Esegui `python -m venv nome_ambiente` per creare un nuovo ambiente virtuale. `nome_ambiente` può essere sostituito con il nome che preferisci per il tuo ambiente virtuale.
+Before running the backend, it is important to configure a Python virtual environment. This allows you to isolate project dependencies, avoiding conflicts with other Python installations on the system and facilitating the management of specific project libraries.
 
-2. Attivazione dell'Ambiente Virtuale:
-   - **Windows**: Esegui `nome_ambiente\Scripts\activate`.
-   - **macOS/Linux**: Esegui `source nome_ambiente/bin/activate`.
-   - Noterai che il nome dell'ambiente virtuale apparirà nel prompt, indicando che è attivo.
+1. Creating the Virtual Environment:
+   - Open a terminal or command prompt.
+   - Navigate to the project's backend folder.
+   - Run `python -m venv environment_name` to create a new virtual environment. `environment_name` can be replaced with the name you prefer for your virtual environment.
 
-3. Installazione di Django e Django REST framework:
-   - Con l'ambiente virtuale attivo, installa Django eseguendo `pip install django`.
-   - Installa Django REST framework con `pip install djangorestframework`.
+2. Activating the Virtual Environment:
+   - **Windows**: Run `environment_name\Scripts\activate`.
+   - **macOS/Linux**: Run `source environment_name/bin/activate`.
+   - You will notice that the name of the virtual environment appears in the prompt, indicating that it is active.
 
-Dopo aver configurato l'ambiente virtuale e installato le dipendenze necessarie, sei pronto per eseguire il backend del progetto Bombify.
+3. Installing Django and Django REST framework:
+   - With the virtual environment active, install Django by running `pip install django`.
+   - Install Django REST framework with `pip install djangorestframework`.
 
-Dopo aver configurato l'ambiente virtuale e installato le dipendenze necessarie, segui questi passaggi per avviare il backend di Bombify:
+After configuring the virtual environment and installing the necessary dependencies, you are ready to run the Bombify backend.
 
-1. Migrazioni del Database:
-   - Assicurati che l'ambiente virtuale sia attivo.
-   - Esegui `python manage.py makemigrations` per preparare le migrazioni del database.
-   - Poi, esegui `python manage.py migrate` per applicare le migrazioni al database.
+After configuring the virtual environment and installing the necessary dependencies, follow these steps to start the Bombify backend:
 
-2. Avvio del Server Django:
-   - Avvia il server backend con il comando `python manage.py runserver`.
-   - Il server si avvierà tipicamente all'indirizzo `http://127.0.0.1:8000/`.
-   - Naviga a questo indirizzo nel tuo browser per verificare che il server sia attivo e funzionante.
+1. Database Migrations:
+   - Make sure the virtual environment is active.
+   - Run `python manage.py makemigrations` to prepare database migrations.
+   - Then, run `python manage.py migrate` to apply the migrations to the database.
+
+2. Starting the Django Server:
+   - Start the backend server with the command `python manage.py runserver`.
+   - The server will typically start at the address `http://127.0.0.1:8000/`.
+   - Navigate to this address in your browser to verify that the server is active and functioning.
+
+## Contacts
+
+For any questions, feedback, or if you wish to collaborate on the project, please do not hesitate to contact me:
+
+- **Email**: [gioeleali2001@gmail.com](mailto:gioeleali2001@gmail.com)
+- **Telegram**: [@gioeleali](https://t.me/gioeleali)
+
+---
+
+Made with ❤️ by Gioele Alì
