@@ -10,6 +10,7 @@ import Tema from './Impostazioni/Tema';
 import Preferenze from './Impostazioni/Preferenze';
 import Login from './Account/Login';
 import Account_Settings from './Impostazioni/Account'
+import Register from './Account/Register'
 
 const Stack = createStackNavigator();
 
@@ -41,7 +42,8 @@ const Home = () => {
 function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator initialRouteName="Register">
+        <Stack.Screen name="Register" component={Register} options={{ headerShown: false }} />
         <Stack.Screen name="Home" component={Home} options={{ headerShown: false }} />
         <Stack.Screen name="Impostazioni" component={Impostazioni} options={{ headerShown: false }} />
         <Stack.Screen name="Tema" component={Tema} options={{ headerShown: false }} />

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Text, Card, Avatar, Button } from 'react-native-paper';
-import { View, StyleSheet, Linking } from 'react-native';
+import { View, StyleSheet, Linking, Dimensions } from 'react-native';
+import MapView, { Marker } from '@splicer97/react-native-osmdroid';
 
 const Info = () => {
   return (
@@ -27,6 +28,23 @@ const Info = () => {
         </Card.Content>
         <Card.Cover style={styles.cover} source={require('../assets/png/home.webp')} />
       </Card>
+      <View>
+        <MapView
+        style={styles.map}
+        initialRegion={{
+          latitude: 43.7228,
+          longitude: 10.4017,
+          latitudeDelta: 0.0922,
+          longitudeDelta: 0.0421,
+        }}
+      >
+        <Marker
+          coordinate={{ latitude: 43.71648894384868, longitude: 10.402039918740353 }}
+          title={"Bombolò"}
+          description={"Bomboleria"}
+        />
+      </MapView>
+      </View>
     </View>
   );
 }
@@ -74,7 +92,12 @@ const styles = StyleSheet.create({
   link: {
     textDecorationLine: 'underline',
     color: 'blue',
-  }
+  },
+  map: {
+    width: '100%',
+    height: 200,
+    borderRadius: 20,
+  },
 });
 
 export default Info;
