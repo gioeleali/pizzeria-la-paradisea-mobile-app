@@ -1,4 +1,3 @@
-import React from 'react';
 import { Text, Card, Avatar, Button } from 'react-native-paper';
 import { View, StyleSheet, Linking, Dimensions } from 'react-native';
 import MapView, { Marker } from '@splicer97/react-native-osmdroid';
@@ -24,27 +23,28 @@ const Info = () => {
             <Text style={styles.bold}>Lunedì</Text>: Chiuso
             {'\n'}
             <Text style={styles.bold}>Martedì</Text>: 16:30–01
+            {'\n'}
           </Text>
+          <View style={styles.mapContainer}>
+            <MapView
+              style={styles.map}
+              initialRegion={{
+                latitude: 43.7228,
+                longitude: 10.4017,
+                latitudeDelta: 0.0922,
+                longitudeDelta: 0.0421,
+              }}
+            >
+              <Marker
+                coordinate={{ latitude: 43.71648894384868, longitude: 10.402039918740353 }}
+                title={"Bombolò"}
+                description={"Bomboleria"}
+              />
+            </MapView>
+          </View>
         </Card.Content>
         <Card.Cover style={styles.cover} source={require('../assets/png/home.webp')} />
       </Card>
-      <View>
-        <MapView
-        style={styles.map}
-        initialRegion={{
-          latitude: 43.7228,
-          longitude: 10.4017,
-          latitudeDelta: 0.0922,
-          longitudeDelta: 0.0421,
-        }}
-      >
-        <Marker
-          coordinate={{ latitude: 43.71648894384868, longitude: 10.402039918740353 }}
-          title={"Bombolò"}
-          description={"Bomboleria"}
-        />
-      </MapView>
-      </View>
     </View>
   );
 }
@@ -93,9 +93,14 @@ const styles = StyleSheet.create({
     textDecorationLine: 'underline',
     color: 'blue',
   },
-  map: {
-    width: '100%',
+  mapContainer: {
+    position: 'relative',
     height: 200,
+    borderRadius: 20,
+    overflow: 'hidden',
+  },
+  map: {
+    flex: 1,
     borderRadius: 20,
   },
 });

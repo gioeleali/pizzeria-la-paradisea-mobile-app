@@ -157,11 +157,14 @@ const Shopping = () => {
 
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: 'white', 
     flex: 1,
+    alignItems: 'flex-start',
+    justifyContent: 'flex-start',
     padding: 16,
-    backgroundColor: 'white',
   },
   title: {
+    color: 'black',
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 16,
@@ -185,10 +188,12 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
     marginVertical: 8,
+    color: 'black',
   },
   itemPrice: {
     fontSize: 14,
     color: 'gray',
+    color: 'black',
   },
   cart: {
     position: 'absolute',

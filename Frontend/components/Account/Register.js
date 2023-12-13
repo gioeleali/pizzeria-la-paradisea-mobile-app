@@ -4,6 +4,7 @@ import { View, StyleSheet, Linking } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import FastImage from 'react-native-fast-image';
 import { Dimensions } from 'react-native';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import axios from 'axios';
 
 const { width, height } = Dimensions.get('window');
@@ -16,6 +17,9 @@ const Account = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
+    const toggleShowPassword = () => { 
+      setShowPassword(!showPassword); 
+    }; 
     const [isEmailTouched, setEmailTouched] = useState(false);
 
     const isNomeValid = (text) => {
@@ -104,16 +108,18 @@ const Account = () => {
           <TextInput
             label="Password"
             secureTextEntry={!showPassword}
-            right={
-              <TextInput.Icon
-                name={showPassword ? 'eye-off' : 'eye'}
-                onPress={() => setShowPassword(!showPassword)}
-              />
-            }
             style={styles.input}
             value={password}
             onChangeText={(text) => setPassword(text)}
             dense={true}
+            right={
+                <TextInput.Icon
+                  name={showPassword ? 'eye-off' : 'eye'} 
+                  size={24} 
+                  color="#aaa" 
+                  onPress={toggleShowPassword} 
+                />
+            }
           />
           {isPasswordValid(password) ? null : (
             <HelperText type="error" style={styles.helperText}>
@@ -132,10 +138,10 @@ const Account = () => {
                 navigation.navigate('Home');
               }}
               style={[styles.rectangleButton, { backgroundColor: 'black' }]}
-              labelStyle={{ fontSize: 18 }}
+              labelStyle={{ fontSize: 18, fontFamily: 'Product-Sans-Regular' }}
             >Registrati</Button>
           </View>
-          <Text style={styles.additionalText}>Hai già un account?
+          <Text style={[styles.additionalText, { fontFamily: 'Product-Sans-Regular' }]}>Hai già un account?
             <Text
               style={styles.link}
               onPress={() => navigation.navigate('Login')}
@@ -163,12 +169,11 @@ const Account = () => {
       opacity: 0.2,
     },
     title: {
+      fontFamily: 'Product-Sans-Bold',
       color: 'black',
       fontSize: 24,
-      fontWeight: 'bold',
       marginBottom: 16,
       alignSelf: 'center',
-      fontFamily: 'Tealand-Regular'
     },
     input: {
       width: '90%',
@@ -181,7 +186,7 @@ const Account = () => {
     },
     rectangleButton: {
       height: 40,
-      borderRadius: 50,
+      borderRadius: 10,
       margin: 8,
       width: '90%',
     },

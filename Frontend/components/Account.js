@@ -1,178 +1,179 @@
 import React, { useState } from 'react';
-import { Text, TextInput, Button, HelperText, useTheme } from 'react-native-paper';
-import { View, StyleSheet, Linking } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import axios from 'axios';
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image } from 'react-native';
 
 const Account = () => {
-    const navigation = useNavigation();
-
-    const [nome, setNome] = useState('');
-    const [cognome, setCognome] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [showPassword, setShowPassword] = useState(false);
-    const [isEmailTouched, setEmailTouched] = useState(false);
-
-    const isNomeValid = (text) => {
-      const regex = /[0-9]/;
-      return text === '' || (!regex.test(text) && text.length > 0);
-    };
-    
-    const isCognomeValid = (text) => {
-      const regex = /[0-9]/;
-      return text === '' || (!regex.test(text) && text.length > 0);
-    };
-    
-    const isEmailValid = (text) => {
-      return !isEmailTouched || text === '' || (text.includes("@") && text.length > 0);
-    };
-    
-    const isPasswordValid = (text) => {
-      const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{12,}$/;
-      return text === '' || (regex.test(text) && text.length > 0);
-    };
-
-    const submitData = () => {
-      axios.post('http://192.168.85.26:8000/register/', {
-        nome: nome,
-        cognome: cognome,
-        email: email,
-        password: password
-      })
-      .then(response => {
-        console.log('User registered:', response.data);
-      })
-      .catch(error => {
-        console.error('Registration error:', error);
-      });
-    };
-
-    return (
-        <View style={styles.container}>
-          <Text style={styles.title}>Account</Text>
-          <TextInput
-            style={styles.input}
-            mode="outlined"
-            label="Nome"
-            placeholder="Mario"
-            value={nome}
-            onChangeText={(text) => setNome(text)}
-            dense={true}
-          />
-          {isNomeValid(nome) ? null : (
-            <HelperText type="error" style={styles.helperText}>
-              Il nome non può contenere numeri!
-            </HelperText>
-          )}
-          <TextInput
-            style={styles.input}
-            mode="outlined"
-            label="Cognome"
-            placeholder="Rossi"
-            value={cognome}
-            onChangeText={(text) => setCognome(text)}
-            dense={true}
-          />
-          {isCognomeValid(cognome) ? null : (
-            <HelperText type="error" style={styles.helperText}>
-              Il cognome non può contenere numeri!
-            </HelperText>
-          )}
-          <TextInput
-            style={styles.input}
-            mode="outlined"
-            label="Email"
-            onChangeText={(text) => setEmail(text)}
-            onBlur={() => setEmailTouched(true)}
-            dense={true}
-          />
-          {isEmailValid(email) ? null : (
-            <HelperText type="error" style={styles.helperText}>
-              L'email deve contenere la @!
-            </HelperText>
-          )}
-          <TextInput
-            label="Password"
-            secureTextEntry={!showPassword}
-            right={
-              <TextInput.Icon
-                name={showPassword ? 'eye-off' : 'eye'}
-                onPress={() => setShowPassword(!showPassword)}
-              />
-            }
-            style={styles.input}
-            value={password}
-            onChangeText={(text) => setPassword(text)}
-            dense={true}
-          />
-          {isPasswordValid(password) ? null : (
-            <HelperText type="error" style={styles.helperText}>
-              La password deve contenere almeno una maiuscola, una minuscola e un carattere speciale!
-            </HelperText>
-          )}
-          <View style={{ flexDirection: 'row' }}>
-            <Button
-              mode="contained"
-              onPress={() => {
-                console.log('Nome:', nome);
-                console.log('Cognome:', cognome);
-                console.log('Email:', email);
-                console.log('Password:', password);
-                submitData();
-              }}
-              style={[styles.rectangleButton, { backgroundColor: 'black' }]}
-              labelStyle={{ fontSize: 18 }}
-            >Registrati</Button>
-          </View>
-          <Text style={styles.additionalText}>Hai già un account?
-            <Text
-              style={styles.link}
-              onPress={() => navigation.navigate('Login')}
-            > Accedi</Text>
-          </Text>
-        </View>
-      );
-  };
-
-  const styles = StyleSheet.create({
-    container: {
-      backgroundColor: 'white', 
-      flex: 1,
-      alignItems: 'flex-start',
-      justifyContent: 'flex-start',
-      padding: 16,
-    },
-    title: {
-      color: 'black',
-      fontSize: 24,
-      fontWeight: 'bold',
-      marginBottom: 16,
-    },
-    input: {
-      width: '100%',
-      marginBottom: 16,
-    },
-    helperText: {
-        marginTop: -20,
-        marginBottom: 10,
-    },
-    rectangleButton: {
-      flex: 1,
-      height: 40,
-      borderRadius: 50,
-      margin: 8,
-      width: 20,
-    },
-    additionalText: {
-      color: 'black',
-      fontSize: 14,
-      alignSelf: 'center',
-    },
-    link: {
-      textDecorationLine: 'underline',
-      color: 'black',
-    }
+  const [isEditing, setIsEditing] = useState(false);
+  const [userData, setUserData] = useState({
+    nome: 'Mario',
+    cognome: 'Rossi',
+    email: 'mario.rossi@example.com',
+    password: '************',
+    profileImage: 'https://w0.peakpx.com/wallpaper/979/89/HD-wallpaper-purple-smile-design-eye-smily-profile-pic-face.jpg',
   });
 
-  export default Account;
+  const handleNameChange = (newName) => {
+    setUserData((prevData) => ({ ...prevData, nome: newName }));
+  };
+
+  const handleSurnameChange = (newSurname) => {
+    setUserData((prevData) => ({ ...prevData, cognome: newSurname }));
+  };
+
+  const handleEmailChange = (newEmail) => {
+    setUserData((prevData) => ({ ...prevData, email: newEmail }));
+  };
+
+  const handlePasswordChange = (newPassword) => {
+    setUserData((prevData) => ({ ...prevData, password: newPassword }));
+  };
+
+  const startEditing = () => {
+    setIsEditing(true);
+  };
+
+  const saveChanges = () => {
+    // Qui puoi implementare la logica per salvare le modifiche sul server o nel tuo sistema
+    console.log('Modifiche salvate:', userData);
+    setIsEditing(false);
+  };
+
+  return (
+    <View style={styles.card}>
+      <Text style={styles.title}>Account</Text>
+
+      <View style={styles.profileImageContainer}>
+        <Image source={{ uri: userData.profileImage }} style={styles.profileImage} />
+      </View>
+
+      <View style={styles.userInfo}>
+        <Text style={styles.label}>Nome:</Text>
+        {isEditing ? (
+          <TextInput
+            style={styles.input}
+            value={userData.nome}
+            onChangeText={handleNameChange}
+          />
+        ) : (
+          <Text style={styles.value}>{userData.nome}</Text>
+        )}
+      </View>
+
+      <View style={styles.userInfo}>
+        <Text style={styles.label}>Cognome:</Text>
+        {isEditing ? (
+          <TextInput
+            style={styles.input}
+            value={userData.cognome}
+            onChangeText={handleSurnameChange}
+          />
+        ) : (
+          <Text style={styles.value}>{userData.cognome}</Text>
+        )}
+      </View>
+
+      <View style={styles.userInfo}>
+        <Text style={styles.label}>Email:</Text>
+        {isEditing ? (
+          <TextInput
+            style={styles.input}
+            value={userData.email}
+            onChangeText={handleEmailChange}
+          />
+        ) : (
+          <Text style={styles.value}>{userData.email}</Text>
+        )}
+      </View>
+
+      <View style={styles.userInfo}>
+        <Text style={styles.label}>Password:</Text>
+        {isEditing ? (
+          <TextInput
+            style={styles.input}
+            value={userData.password}
+            onChangeText={handlePasswordChange}
+          />
+        ) : (
+          <Text style={styles.value}>{userData.password}</Text>
+        )}
+      </View>
+
+      {isEditing ? (
+        <TouchableOpacity style={styles.saveButton} onPress={saveChanges}>
+          <Text style={styles.saveButtonText}>Salva Modifiche</Text>
+        </TouchableOpacity>
+      ) : (
+        <TouchableOpacity style={styles.editButton} onPress={startEditing}>
+          <Text style={styles.editButtonText}>Modifica</Text>
+        </TouchableOpacity>
+      )}
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  card: {
+    backgroundColor: 'white',
+    borderRadius: 10,
+    elevation: 3,
+    padding: 16,
+    margin: 16,
+    alignItems: 'center',
+  },
+  title: {
+    color: 'black',
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginBottom: 16,
+  },
+  profileImageContainer: {
+    alignItems: 'center',
+    marginBottom: 16,
+  },
+  profileImage: {
+    width: 100,
+    height: 100,
+    borderRadius: 50,
+  },
+  userInfo: {
+    marginBottom: 16,
+  },
+  label: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginBottom: 8,
+    color: 'black',
+  },
+  value: {
+    fontSize: 16,
+    color: 'black',
+  },
+  input: {
+    height: 40,
+    borderColor: 'gray',
+    borderWidth: 1,
+    marginBottom: 8,
+    padding: 8,
+  },
+  saveButton: {
+    backgroundColor: 'blue',
+    padding: 10,
+    borderRadius: 5,
+    alignItems: 'center',
+  },
+  saveButtonText: {
+    color: 'white',
+    fontWeight: 'bold',
+  },
+  editButton: {
+    backgroundColor: 'green',
+    padding: 10,
+    borderRadius: 5,
+    alignItems: 'center',
+  },
+  editButtonText: {
+    color: 'white',
+    fontWeight: 'bold',
+  },
+});
+
+export default Account;
