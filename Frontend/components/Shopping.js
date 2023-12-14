@@ -222,9 +222,6 @@ const styles = StyleSheet.create({
   cartItemName: {
     fontWeight: 'bold',
   },
-  cartItemPrice: {
-    // ... your styles
-  },
   totalPrice: {
     marginTop: 10,
     fontSize: 18,
