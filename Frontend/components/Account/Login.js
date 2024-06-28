@@ -6,6 +6,7 @@ import FastImage from 'react-native-fast-image';
 import { Dimensions } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import axios from 'axios';
+import {url} from '../../.config/config'
 
 const { width, height } = Dimensions.get('window');
 
@@ -42,9 +43,7 @@ const Account = () => {
     };
 
     const submitData = () => {
-      axios.post('http://192.168.85.26:8000/register/', {
-        nome: nome,
-        cognome: cognome,
+      axios.post('http:///register/', {
         email: email,
         password: password
       })
@@ -104,8 +103,9 @@ const Account = () => {
               onPress={() => {
                 //console.log('Email:', email);
                 //console.log('Password:', password);
-                //submitData();
+                submitData();
                 navigation.navigate('Home');
+
               }}
               style={[styles.rectangleButton, { backgroundColor: 'black' }]}
               labelStyle={{ fontSize: 18, fontFamily: 'Product-Sans-Regular' }}

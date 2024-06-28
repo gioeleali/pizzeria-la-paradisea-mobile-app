@@ -1,4 +1,4 @@
-# Bombify 🍩
+# Pizzeria La Paradisea
 
 **Bombify** is an innovative and intuitive mobile platform, specifically designed to transform the experience of selling and buying doughnuts. This sleek and user-friendly app is equipped with a wide range of features for both doughnut sellers and buyers.
 

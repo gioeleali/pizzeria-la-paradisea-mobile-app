@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Text, TextInput, Button, HelperText, useTheme } from 'react-native-paper';
 import { View, StyleSheet, Linking } from 'react-native';
@@ -42,7 +43,7 @@ const Account = () => {
     };
 
     const submitData = () => {
-      axios.post('http://192.168.85.26:8000/register/', {
+      axios.post('http://${url}/register/', {
         nome: nome,
         cognome: cognome,
         email: email,
@@ -130,11 +131,11 @@ const Account = () => {
             <Button
               mode="contained"
               onPress={() => {
-                //console.log('Nome:', nome);
-                //console.log('Cognome:', cognome);
-                //console.log('Email:', email);
-                //console.log('Password:', password);
-                //submitData();
+                console.log('Nome:', nome);
+                console.log('Cognome:', cognome);
+                console.log('Email:', email);
+                console.log('Password:', password);
+                submitData();
                 navigation.navigate('Home');
               }}
               style={[styles.rectangleButton, { backgroundColor: 'black' }]}

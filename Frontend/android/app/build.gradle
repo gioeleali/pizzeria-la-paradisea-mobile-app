@@ -73,9 +73,9 @@ android {
 
     compileSdkVersion rootProject.ext.compileSdkVersion
 
-    namespace "com.bombify"
+    namespace "com.pizzeria.paradisea"
     defaultConfig {
-        applicationId "com.bombify"
+        applicationId "com.pizzeria.paradisea"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

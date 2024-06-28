@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-               BuildableName = "Bombify.app"
-               BlueprintName = "Bombify"
-               ReferencedContainer = "container:Bombify.xcodeproj">
+               BuildableName = "PizzeriaLaParadisea.app"
+               BlueprintName = "PizzeriaLaParadisea"
+               ReferencedContainer = "container:PizzeriaLaParadisea.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "BombifyTests.xctest"
-               BlueprintName = "BombifyTests"
-               ReferencedContainer = "container:Bombify.xcodeproj">
+               BuildableName = "PizzeriaLaParadiseaTests.xctest"
+               BlueprintName = "PizzeriaLaParadiseaTests"
+               ReferencedContainer = "container:PizzeriaLaParadisea.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -55,9 +55,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "Bombify.app"
-            BlueprintName = "Bombify"
-            ReferencedContainer = "container:Bombify.xcodeproj">
+            BuildableName = "PizzeriaLaParadisea.app"
+            BlueprintName = "PizzeriaLaParadisea"
+            ReferencedContainer = "container:PizzeriaLaParadisea.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -72,9 +72,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "Bombify.app"
-            BlueprintName = "Bombify"
-            ReferencedContainer = "container:Bombify.xcodeproj">
+            BuildableName = "PizzeriaLaParadisea.app"
+            BlueprintName = "PizzeriaLaParadisea"
+            ReferencedContainer = "container:PizzeriaLaParadisea.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

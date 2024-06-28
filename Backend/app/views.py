@@ -28,6 +28,7 @@ def login_user(request):
     datas= request.data
     print(datas)
     if request.data is not None:
+        
         user = models.User.objects.get(email=datas.get("email"),)
         print(user.password)
         if datas.get("password") == user.password:

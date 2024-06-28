@@ -1,4 +1,4 @@
-package com.bombify;
+package com.pizzeria.paradisea;
 
 import android.app.Application;
 import com.facebook.react.PackageList;

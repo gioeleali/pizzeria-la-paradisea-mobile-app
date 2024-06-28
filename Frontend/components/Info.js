@@ -7,62 +7,56 @@ const Info = () => {
     <View style={styles.container}>
       <Text style={styles.title}>Informazioni</Text>
       <Card style={styles.card}>
-        <Card.Cover style={styles.cover} source={require('../assets/png/home.webp')} />
-        <Card.Title title="Bombolò" titleStyle={styles.titleText} subtitle="Pasticceria" subtitleStyle={styles.subtitleText}/>
+        <Card.Cover style={styles.cover} source={require('../assets/png/home.png')} />
+        <Card.Title title="Pizzeria La Paradisea" titleStyle={styles.titleText} subtitle="Pizzeria" subtitleStyle={styles.subtitleText}/>
         <Card.Content>
           <Text style={styles.description}>
-            <Text style={styles.bold}>Martedì</Text>: 16:30 – 01:00
+            <Text style={styles.bold}>Lunedì</Text>: 17:30 – 23:00
             {'\n'}
-            <Text style={styles.bold}>Mercoledì</Text>: 16:30 – 01:00
+            <Text style={styles.bold}>Chiuso il Martedì</Text>
             {'\n'}
-            <Text style={styles.bold}>Giovedì</Text>: 16:30 – 01:00
+            <Text style={styles.bold}>Mercoledì</Text>: 17:30 – 23:00
             {'\n'}
-            <Text style={styles.bold}>Venerdì</Text>: 16:30 – 02:00
+            <Text style={styles.bold}>Giovedì</Text>: 17:30 – 23:00
             {'\n'}
-            <Text style={styles.bold}>Sabato</Text>: 16:30 – 02:00
+            <Text style={styles.bold}>Venerdì</Text>: 17:30 – 23:00
             {'\n'}
-            <Text style={styles.bold}>Domenica</Text>: 16:30 – 01:00
+            <Text style={styles.bold}>Sabato</Text>: 17:30 – 23:00
             {'\n'}
-            <Text style={styles.bold}>Chiuso il Lunedì</Text>
+            <Text style={styles.bold}>Domenica</Text>: 17:30 – 23:00
             {'\n'}
           </Text>
-          <Text style={styles.subtitleText}>📍Piazza Garibaldi, 14, 56126 Pisa PI</Text>
+          <Text style={styles.subtitleText}>📍Via S. Marco, 60, 56121 Pisa PI{'\n'}</Text>
           <View style={styles.mapContainer}>
             <MapView
               style={styles.map}
               initialRegion={{
-                latitude: 43.71648894384868,
-                longitude: 10.402039918740353,
+                latitude: 43.703310,
+                longitude: 10.404110,
                 latitudeDelta: 0.004,
                 longitudeDelta: 0.004,
               }}
             >
               <Marker
-                coordinate={{ latitude: 43.71648894384868, longitude: 10.402039918740353 }}
-                title={"Bombolò"}
-                description={"Bomboleria"}
+                coordinate={{ latitude: 43.703310, longitude: 10.404110 }}
+                title={"Pizzeria La Paradisea"}
+                description={"Pizzeria"}
                 image={require('../assets/png/marker.png')}
               />
             </MapView>
           </View>
           <View style={styles.contactIcons}>
+          <IconButton
+              icon="phone"
+              color="#007AFF"
+              size={30}
+              onPress={() => Linking.openURL('tel:+39050500040')}
+            />
             <IconButton
               icon="email"
               color="#007AFF"
               size={30}
-              onPress={() => Linking.openURL('mailto:gioeleali2001@gmail.com')}
-            />
-            <IconButton
-              icon="whatsapp"
-              color="#25D366"
-              size={30}
-              onPress={() => Linking.openURL('https://api.whatsapp.com/send?phone=393426685681&text=Ciao%20Gioele!%20Ho%20visto%20la%20tua%20app%20e%20volevo%20farti%20i%20complimenti!')}
-            />
-            <IconButton
-              icon="phone"
-              color="#007AFF"
-              size={30}
-              onPress={() => Linking.openURL('tel:+393426685681')}
+              onPress={() => Linking.openURL('mailto:laparadisea@yahoo.it')}
             />
           </View>
         </Card.Content>
