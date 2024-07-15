@@ -10,8 +10,8 @@ const Account = () => {
   const data = [
     {
       id: '1',
-      title: 'Opzione Account 1',
-      description: 'Descrizione 1',
+      title: 'Modifica Informazioni Account',
+      description: 'Modifica le informazioni dei dati collegati al tuo account',
       icon: 'account-edit'
     },
     {
@@ -23,7 +23,11 @@ const Account = () => {
   ];
 
   const handleItemClick = (item) => {
+    if (item.id === '1') {
+      navigation.navigate('EditAccount');
+    } else {
       console.log(`Hai selezionato: ${item.title}`);
+    }
   };
 
   const renderItem = ({ item }) => (

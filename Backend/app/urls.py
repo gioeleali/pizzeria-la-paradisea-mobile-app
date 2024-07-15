@@ -1,17 +1,10 @@
-from django.contrib import admin
 from django.urls import path
 from . import views
-from rest_framework import routers
-
-# router= routers.DefaultRouter()
-# router.register(r"users", views.registra_utente)
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('register/', views.registra_utente, name='register'),
-    path('login/', views.login_user, name='login'),
     path('', views.home, name='home'),
-    path('users/', views.users_list, name='users_list'),
+    path('csrf/', views.get_csrf_token),
+    path('users/', views.users, name='users'),
+    path('register/', views.api_register, name='api_register'),
+    path('login/', views.api_login, name='api_login'),
 ]
-
-# urlpatterns += router.urls

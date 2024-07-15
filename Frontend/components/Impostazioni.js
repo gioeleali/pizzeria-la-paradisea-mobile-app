@@ -87,7 +87,7 @@ const Impostazioni = () => {
         onDismiss={() => setSnackbarVisible(false)}
         duration={Snackbar.DURATION_SHORT}
         style={styles.snackbar}
-      >Cercati un lavoro ツ</Snackbar>
+      >ITS Prodigi 2022-2024 ♥</Snackbar>
     </View>
   );
 }

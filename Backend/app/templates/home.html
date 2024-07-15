@@ -1,1 +1,68 @@
-<h2>Django Project Started!</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizzeria La Paradisea</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            width: 80%;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            text-align: center;
+        }
+        h2 {
+            color: #0056b3;
+        }
+        .button-container {
+            margin-top: 20px;
+        }
+        .button-container a {
+            text-decoration: none;
+        }
+        .button-container button {
+            background-color: #0056b3;
+            color: #fff;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            margin: 10px;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+        .button-container button:hover {
+            background-color: #003d80;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Pizzeria La Paradisea</h2>
+        <div class="button-container">
+            <a href="{% url 'login' %}">
+                <button>Login</button>
+            </a>
+            <a href="{% url 'register' %}">
+                <button>Registrazione</button>
+            </a>
+            <a href="{% url 'users' %}">
+                <button>Lista Utenti</button>
+            </a>
+        </div>
+    </div>
+</body>
+</html>

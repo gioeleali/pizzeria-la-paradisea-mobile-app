@@ -5,6 +5,3 @@ class RegistrazioneForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ['nome', 'cognome', 'email', 'password']
-        widgets = {
-            'password': forms.PasswordInput(),
-        }

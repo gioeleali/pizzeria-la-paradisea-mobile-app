@@ -8,8 +8,9 @@ const Info = () => {
       <Text style={styles.title}>Informazioni</Text>
       <Card style={styles.card}>
         <Card.Cover style={styles.cover} source={require('../assets/png/home.png')} />
-        <Card.Title title="Pizzeria La Paradisea" titleStyle={styles.titleText} subtitle="Pizzeria" subtitleStyle={styles.subtitleText}/>
+        <Card.Title title="🍕Pizzeria La Paradisea" titleStyle={styles.titleText}/>
         <Card.Content>
+          <Text style={styles.description}>Focacce, insalate e pizze, anche da asporto, proposte tra arredi curati in un locale dal clima informale.{'\n'}</Text>
           <Text style={styles.description}>
             <Text style={styles.bold}>Lunedì</Text>: 17:30 – 23:00
             {'\n'}
@@ -26,7 +27,6 @@ const Info = () => {
             <Text style={styles.bold}>Domenica</Text>: 17:30 – 23:00
             {'\n'}
           </Text>
-          <Text style={styles.subtitleText}>📍Via S. Marco, 60, 56121 Pisa PI{'\n'}</Text>
           <View style={styles.mapContainer}>
             <MapView
               style={styles.map}
@@ -46,11 +46,23 @@ const Info = () => {
             </MapView>
           </View>
           <View style={styles.contactIcons}>
-          <IconButton
+            <IconButton
               icon="phone"
               color="#007AFF"
               size={30}
               onPress={() => Linking.openURL('tel:+39050500040')}
+            />
+            <IconButton
+              icon="web"
+              color="#007AFF"
+              size={30}
+              onPress={() => Linking.openURL('https://www.pizzerialaparadisea.it/')}
+            />
+            <IconButton
+              icon="map"
+              color="#007AFF"
+              size={30}
+              onPress={() => Linking.openURL('https://maps.app.goo.gl/ajHp3QyhgDPn6MRZA')}
             />
             <IconButton
               icon="email"
@@ -106,10 +118,6 @@ const styles = StyleSheet.create({
   },
   bold: {
     fontWeight: 'bold',
-  },
-  link: {
-    textDecorationLine: 'underline',
-    color: 'blue',
   },
   mapContainer: {
     position: 'relative',

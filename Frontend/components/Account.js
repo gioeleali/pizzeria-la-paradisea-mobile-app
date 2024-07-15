@@ -1,208 +1,92 @@
-import React, { useState } from 'react';
-import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image, ScrollView } from 'react-native';
-import { Card, Button } from 'react-native-paper';
-import { Picker } from '@react-native-picker/picker';
-import DateTimePicker from '@react-native-community/datetimepicker';
-
-const GenderPicker = ({ value, onChange }) => {
-  return (
-    <View style={styles.pickerContainer}>
-      <Picker
-        style={styles.picker}
-        selectedValue={value}
-        onValueChange={(itemValue) => onChange(itemValue)}
-      >
-        <Picker.Item label="Male" value="Male" />
-        <Picker.Item label="Female" value="Female" />
-        <Picker.Item label="Agender" value="Agender" />
-        <Picker.Item label="Bigender" value="Bigender" />
-        <Picker.Item label="Genderfluid" value="Genderfluid" />
-        <Picker.Item label="Genderqueer" value="Genderqueer" />
-        <Picker.Item label="Non-binary" value="Non-binary" />
-        <Picker.Item label="Other" value="Other" />
-      </Picker>
-    </View>
-  );
-};
+import React from 'react';
+import { View, Text, StyleSheet, Image, ScrollView } from 'react-native';
+import { Card } from 'react-native-paper';
 
 const Account = () => {
-  const [isEditing, setIsEditing] = useState(false);
-  const [showDatePicker, setShowDatePicker] = useState(false);
-  const [userData, setUserData] = useState({
+  const userData = {
     nome: 'Mario',
     cognome: 'Rossi',
-    email: 'mario.rossi@example.com',
-    password: 'psw',
-    genere: 'Male',
-    dateOfBirth: new Date(),
+    username: '@mariorossi',
+    telefono: '+39 342 6685681',
+    dateOfBirth: '24 Nov',
     profileImage: 'https://tse1.mm.bing.net/th?q=blank%20user%20profile',
-  });
-
-  const handleInputChange = (key, value) => {
-    setUserData((prevData) => ({ ...prevData, [key]: value }));
-  };
-
-  const handleDateOfBirthChange = (event, date) => {
-    setShowDatePicker(false);
-    if (date) {
-      handleInputChange('dateOfBirth', date);
-    }
-  };
-
-  const startEditing = () => {
-    setIsEditing(true);
-  };
-
-  const saveChanges = () => {
-    console.log('Modifiche salvate:', userData);
-    setIsEditing(false);
   };
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Account</Text>
-      <Card style={styles.card}>
-        <Card.Content>
-          <ScrollView contentContainerStyle={styles.scrollContent}>
-            <View style={styles.profileSection}>
-              <TouchableOpacity onPress={() => {/* Funzione per cambiare immagine */}}>
-                <Image source={{ uri: userData.profileImage }} style={styles.profileImage} />
-              </TouchableOpacity>
+      <ScrollView contentContainerStyle={styles.scrollContent}>
+        <View style={styles.header}>
+          <Image source={{ uri: userData.profileImage }} style={styles.profileImage} />
+          <View style={styles.headerText}>
+            <Text style={styles.name}>{userData.nome} {userData.cognome}</Text>
+            <Text style={styles.username}>{userData.username}</Text>
+          </View>
+        </View>
+        <Card style={styles.card}>
+          <Card.Content>
+            <View style={styles.infoSection}>
+              <Text style={styles.infoLabel}>Cellulare</Text>
+              <Text style={styles.infoValue}>{userData.telefono}</Text>
             </View>
-            <View style={styles.detailsSection}>
-              {[
-                { label: 'Nome', key: 'nome' },
-                { label: 'Cognome', key: 'cognome' },
-                { label: 'Email', key: 'email' },
-                { label: 'Password', key: 'password' },
-                { label: 'Date of Birth', key: 'dateOfBirth' },
-                { label: 'Genere', key: 'genere' },
-              ].map((item) => (
-                <View key={item.key} style={styles.userInfo}>
-                  <Text style={styles.label}>{item.label}:</Text>
-                  {isEditing ? (
-                    item.key === 'dateOfBirth' ? (
-                      <TouchableOpacity onPress={() => setShowDatePicker(true)}>
-                        <TextInput
-                          style={styles.input}
-                          editable={false}
-                          value={userData.dateOfBirth.toDateString()}
-                        />
-                      </TouchableOpacity>
-                    ) : item.key === 'genere' ? (
-                      <GenderPicker
-                        value={userData.genere}
-                        onChange={(value) => handleInputChange('genere', value)}
-                      />
-                    ) : (
-                      <TextInput
-                        style={styles.input}
-                        value={userData[item.key]}
-                        onChangeText={(value) => handleInputChange(item.key, value)}
-                      />
-                    )
-                  ) : (
-                    <Text style={styles.value}>
-                      {item.key === 'dateOfBirth'
-                        ? userData.dateOfBirth.toDateString()
-                        : userData[item.key]}
-                    </Text>
-                  )}
-                </View>
-              ))}
-              {showDatePicker && (
-                <DateTimePicker
-                  value={userData.dateOfBirth}
-                  mode="date"
-                  display="spinner"
-                  onChange={handleDateOfBirthChange}
-                />
-              )}
+            <View style={styles.infoSection}>
+              <Text style={styles.infoLabel}>Data di nascita</Text>
+              <Text style={styles.infoValue}>{userData.dateOfBirth}</Text>
             </View>
-          </ScrollView>
-        </Card.Content>
-        <Card.Actions>
-          {isEditing ? (
-            <Button mode="contained" onPress={saveChanges} style={styles.button}>
-              Save
-            </Button>
-          ) : (
-            <Button mode="contained" onPress={startEditing} style={styles.button}>
-              Edit
-            </Button>
-          )}
-        </Card.Actions>
-      </Card>
+          </Card.Content>
+        </Card>
+      </ScrollView>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#FFFFFF', // Sfondo bianco
+    backgroundColor: '#FFFFFF',
     flex: 1,
     padding: 16,
-  },
-  title: {
-    color: 'black',
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginBottom: 16,
-  },
-  card: {
-    width: '100%',
-    backgroundColor: '#F8F8F8', // Sfondo chiaro della card
-    borderRadius: 8,
-    flex: 1,
   },
   scrollContent: {
     flexGrow: 1,
   },
-  profileSection: {
+  header: {
+    flexDirection: 'row',
     alignItems: 'center',
-    marginVertical: 16,
+    marginBottom: 16,
   },
   profileImage: {
-    width: 120,
-    height: 120,
-    borderRadius: 60,
+    width: 80,
+    height: 80,
+    borderRadius: 40,
+    marginRight: 16,
   },
-  detailsSection: {
-    marginTop: 16,
+  headerText: {
+    flex: 1,
   },
-  userInfo: {
-    marginBottom: 12,
+  name: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: '#000000',
   },
-  label: {
+  username: {
+    fontSize: 18,
+    color: '#555555',
+  },
+  card: {
+    backgroundColor: '#F8F8F8',
+    borderRadius: 8,
+  },
+  infoSection: {
+    marginBottom: 16,
+  },
+  infoLabel: {
     fontSize: 16,
-    color: '#000000', // Testo nero
+    fontWeight: 'bold',
+    color: '#000000',
     marginBottom: 4,
   },
-  value: {
+  infoValue: {
     fontSize: 16,
-    color: '#000000', // Testo nero
-  },
-  input: {
-    borderBottomWidth: 1,
-    borderBottomColor: '#000000', // Bordo nero
-    fontSize: 16,
-    color: '#000000', // Testo nero
-    paddingBottom: 4,
-    marginBottom: 4,
-  },
-  pickerContainer: {
-    borderWidth: 1,
-    borderColor: '#000000', // Bordo nero
-    borderRadius: 4,
-  },
-  picker: {
-    width: '100%',
-    height: 44,
-    color: '#000000', // Testo nero
-    backgroundColor: '#F8F8F8', // Sfondo chiaro del picker
-  },
-  button: {
-    backgroundColor: '#000000', // Sfondo nero del pulsante
+    color: '#000000',
   },
 });
 

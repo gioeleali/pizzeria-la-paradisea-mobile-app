@@ -11,6 +11,7 @@ import Preferenze from './Impostazioni/Preferenze';
 import Login from './Account/Login';
 import Account_Settings from './Impostazioni/Account'
 import Register from './Account/Register'
+import EditAccount from './Impostazioni/EditAccount';
 
 const Stack = createStackNavigator();
 
@@ -18,7 +19,7 @@ const Home = () => {
   const [index, setIndex] = React.useState(0);
   const [routes] = React.useState([
     { key: 'account', title: 'Account', focusedIcon: 'account', unfocusedIcon: 'account-outline'},
-    { key: 'shopping', title: 'Shopping', focusedIcon: 'shopping', unfocusedIcon: 'shopping-outline' },
+    { key: 'shopping', title: 'Menù', focusedIcon: 'book-open', unfocusedIcon: 'book-open-outline' },
     { key: 'info', title: 'Informazioni', focusedIcon: 'home-search', unfocusedIcon: 'home-search-outline' },
     { key: 'impostazioni', title: 'Impostazioni', focusedIcon: 'cog', unfocusedIcon: 'cog-outline' },
   ]);
@@ -50,6 +51,7 @@ function App() {
         <Stack.Screen name="Preferenze" component={Preferenze} options={{ headerShown: false }} />
         <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
         <Stack.Screen name="Account" component={Account_Settings} options={{ headerShown: false }} />
+        <Stack.Screen name="EditAccount" component={EditAccount} options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>
   );
