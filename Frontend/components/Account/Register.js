@@ -55,7 +55,7 @@ const Account = () => {
   const submitData = () => {
     setErrorMessage('');
     console.log('Submitting data to the server...');
-    axios.post('http://10.0.2.2:8000/api/register/', {
+    axios.post('http://10.0.2.2:8000/register/', {
       nome: nome,
       cognome: cognome,
       email: email,
@@ -165,9 +165,7 @@ const Account = () => {
       </View>
       <Text style={[styles.additionalText, { fontFamily: 'Product-Sans-Regular' }]}>
         Hai già un account?
-        <Text style={styles.link} onPress={() => navigation.navigate('Login')}>
-          Accedi
-        </Text>
+        <Text style={styles.link} onPress={() => navigation.navigate('Login')}> Accedi</Text>
       </Text>
     </View>
   );

@@ -90,6 +90,48 @@ const App = () => {
     setDetailsModalVisible(!detailsModalVisible);
   };
 
+  const sendCartToServer = async () => {
+    if (cartItems.length === 0) {
+      Alert.alert("Carrello vuoto", "Aggiungi degli articoli al carrello prima di inviare l'ordine.");
+      return;
+    }
+  
+    try {
+      console.log('Iniziando la richiesta al server...');
+      console.log('URL:', 'http://192.168.1.100:8000/cart/');
+      console.log('Dati inviati:', JSON.stringify({
+        customer_name: "Cliente App",
+        cartItems: cartItems
+      }));
+  
+      const response = await fetch('http://192.168.1.100:8000/cart/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          customer_name: "Cliente App",
+          cartItems: cartItems
+        }),
+      });
+      
+      console.log('Risposta ricevuta:', response);
+  
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      
+      const result = await response.json();
+      console.log('Carrello inviato con successo:', result);
+      Alert.alert("Ordine Inviato", "Il tuo ordine è stato inviato con successo!");
+      setCartItems([]);
+      toggleCartModal();
+    } catch (error) {
+      console.error('Errore dettagliato:', error);
+      Alert.alert("Errore", `Si è verificato un errore nell'invio dell'ordine: ${error.message}`);
+    }
+  };
+
   const renderCartItem = ({ item }) => (
     <View style={styles.cartItem}>
       <Text style={styles.cartItemText}>{item.name} - {item.price}</Text>
@@ -144,11 +186,16 @@ const App = () => {
       <View style={styles.modalContent}>
         <Text style={styles.modalTitle}>Carrello</Text>
         {cartItems.length > 0 ? (
-          <FlatList
-            data={cartItems}
-            renderItem={renderCartItem}
-            keyExtractor={item => item.id}
-          />
+          <>
+            <FlatList
+              data={cartItems}
+              renderItem={renderCartItem}
+              keyExtractor={item => item.id}
+            />
+            <TouchableOpacity onPress={sendCartToServer} style={styles.sendButton}>
+              <Text style={styles.sendButtonText}>Invia Ordine</Text>
+            </TouchableOpacity>
+          </>
         ) : (
           <Text style={styles.modalText}>Il carrello è vuoto.</Text>
         )}
@@ -183,9 +230,11 @@ const App = () => {
 
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: 'white', 
     flex: 1,
-    padding: 10,
-    backgroundColor: '#fff',
+    alignItems: 'flex-start',
+    justifyContent: 'flex-start',
+    padding: 16,
   },
   title: {
     color: 'black',
@@ -201,6 +250,11 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     alignItems: 'center',
     justifyContent: 'space-between',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 5,
+    elevation: 3,
   },
   menuItemText: {
     fontSize: 16,
@@ -221,14 +275,6 @@ const styles = StyleSheet.create({
   addButtonText: {
     color: '#fff',
     fontWeight: 'bold',
-  },
-  cart: {
-    position: 'absolute',
-    margin: 16,
-    right: 0,
-    bottom: 0,
-    color: 'white',
-    backgroundColor: 'black',
   },
   cartItem: {
     flexDirection: 'row',
@@ -278,6 +324,17 @@ const styles = StyleSheet.create({
     right: 0,
     bottom: 0,
     backgroundColor: 'black',
+  },
+  sendButton: {
+    marginTop: 20,
+    padding: 10,
+    backgroundColor: 'green',
+    borderRadius: 5,
+    alignItems: 'center',
+  },
+  sendButtonText: {
+    color: '#fff',
+    fontWeight: 'bold',
   },
 });
 

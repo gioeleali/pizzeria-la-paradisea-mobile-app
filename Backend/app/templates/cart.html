@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ordini Ristorante</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+        h2 {
+            color: #0056b3;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Stato degli Ordini</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome Cliente</th>
+                    <th>Ordini</th>
+                    <th>Prezzo</th>
+                    <th>Stato</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td rowspan="2">Mario Rossi</td>
+                    <td>Pizza Napoletana</td>
+                    <td>€7.70</td>
+                    <td>In lavorazione</td>
+                </tr>
+                <tr>
+                    <td>Pizza Rugiada</td>
+                    <td>€7.70</td>
+                    <td>In lavorazione</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
