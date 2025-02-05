@@ -5,11 +5,11 @@
 With Pizzeria La Paradisea, sellers can easily manage their inventory, set prices and promotions, and provide real-time updates on product availability. Users can browse through a variety of flavors and options, make purchases with just a few taps, and receive notifications for new arrivals or special offers.
 
 ### Key Features:
-✅ Product Information and Details: Each pizza is presented with appetizing descriptions and high-quality images.
-✅ Simplified Purchases: An intuitive user interface makes the pizza ordering experience smooth and enjoyable.
-✅ Personal Management: Users can customize settings, manage their orders, and track their preferences.
-✅ Account Area: A dedicated section where users can view their purchase history and manage their personal data.
-✅ Digital Loyalty Card (coming soon): A feature in development that will reward regular customers with exclusive discounts and offers.
+- Product Information and Details: Each pizza is presented with appetizing descriptions and high-quality images.
+- Simplified Purchases: An intuitive user interface makes the pizza ordering experience smooth and enjoyable.
+- Personal Management: Users can customize settings, manage their orders, and track their preferences.
+- Account Area: A dedicated section where users can view their purchase history and manage their personal data.
+- Digital Loyalty Card (coming soon): A feature in development that will reward regular customers with exclusive discounts and offers.
 
 Pizzeria La Paradisea is not just an app; it's a community for pizza lovers, a place where passion for great food meets the convenience of mobile technology. Whether you are an artisan pizza maker or a pizza enthusiast, Pizzeria La Paradisea is here to make every bite even more special! 🍕🔥
 
