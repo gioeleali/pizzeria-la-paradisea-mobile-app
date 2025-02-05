@@ -13,6 +13,8 @@ With Pizzeria La Paradisea, sellers can easily manage their inventory, set price
 
 Pizzeria La Paradisea is not just an app; it's a community for pizza lovers, a place where passion for great food meets the convenience of mobile technology. Whether you are an artisan pizza maker or a pizza enthusiast, Pizzeria La Paradisea is here to make every bite even more special! 🍕🔥
 
+This project was developed as my final academic year project at ITS.
+
 ## Table of Contents
 
 - [System Requirements](#system-requirements)
