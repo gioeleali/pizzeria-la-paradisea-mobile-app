@@ -1,5 +1,7 @@
 # Pizzeria La Paradisea
 
+![Pizzeria La Paradisea Mobile App](banner.png)
+
 **Pizzeria La Paradisea** is an innovative and intuitive mobile platform, specifically designed to transform the experience of selling and buying pizza. This sleek and user-friendly app is equipped with a wide range of features for both pizza sellers and buyers.
 
 With Pizzeria La Paradisea, sellers can easily manage their inventory, set prices and promotions, and provide real-time updates on product availability. Users can browse through a variety of flavors and options, make purchases with just a few taps, and receive notifications for new arrivals or special offers.
